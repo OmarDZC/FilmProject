@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PeliculasAPI.Entidades
 {
-    public class Cine
+    public class Cine : IId
     {
         public int Id { get; set; }
         [Required]

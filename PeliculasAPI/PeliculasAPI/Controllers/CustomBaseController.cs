@@ -53,7 +53,8 @@ namespace PeliculasAPI.Controllers
             return entidad;
         }
 
-        protected async Task<IActionResult> Post <TCreacionDTO, TEntidad, TDTO>(TCreacionDTO creacionDTO, string nombreRuta)
+        protected async Task<IActionResult> Post <TCreacionDTO, TEntidad, TDTO>
+            (TCreacionDTO creacionDTO, string nombreRuta)
             where TEntidad : class, IId
         {
             var entidad = mapper.Map<TEntidad>(creacionDTO);
@@ -63,8 +64,8 @@ namespace PeliculasAPI.Controllers
             await outputCacheStore.EvictByTagAsync(cacheTag, default); //para limpiar el cache al crear o actualizars
 
             //el id viene de genero.Id, se crea un id nuevo se le asigna a Id de genero,  y genero porque puedo devolverlo
-            var generoDTO = mapper.Map<TDTO>(entidad);
-            return CreatedAtRoute("obtenerGeneroPorId", new { id = entidad.Id }, generoDTO);
+            var entidadDTO = mapper.Map<TDTO>(entidad);
+            return CreatedAtRoute(nombreRuta, new { id = entidad.Id }, entidadDTO);
         }
 
         protected async Task<IActionResult> Put<TCreacionDTO, TEntidad>(int id, TCreacionDTO creacionDTO)

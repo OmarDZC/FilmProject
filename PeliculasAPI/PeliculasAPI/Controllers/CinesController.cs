@@ -19,7 +19,7 @@ namespace PeliculasAPI.Controllers
         private readonly IOutputCacheStore outputCacheStore;
         private const string cacheTag = "cines";
 
-        public CinesController(ApplicationDbContext context, IMapper mapper, IOutputCacheStore outputCacheStore, string cacheTag) 
+        public CinesController(ApplicationDbContext context, IMapper mapper, IOutputCacheStore outputCacheStore) 
             : base(context, mapper, outputCacheStore, cacheTag)
         {
             this.context = context;
@@ -34,14 +34,30 @@ namespace PeliculasAPI.Controllers
             return await Get<Cine, CineDTO>(paginacion, ordenarPor: c => c.Nombre);
         }
 
-        [HttpGet("{id:int}", Name = "obtenerCinesPorId")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{id:int}", Name = "obtenerCinePorId")]
+        [OutputCache(Tags = [cacheTag])]
+        public async Task<ActionResult<CineDTO>> Get(int id)
         {
-
+            return await Get<Cine, CineDTO>(id);
         }
 
+        [HttpPost]
+        public async Task <IActionResult> Post([FromBody] CineCreacionDTO cineCreacionDTO)
+        {
+            return await Post <CineCreacionDTO, Cine, CineDTO>(cineCreacionDTO, "obtenerCinePorId");
+        }
 
+        [HttpPut("{id:int}")]
+        public async Task <IActionResult> Put (int id, [FromBody] CineCreacionDTO cineCreacionDTO)  
+        {
+            return await Put<CineCreacionDTO, Cine>(id, cineCreacionDTO);
+        }
 
+        [HttpDelete("{id:int}")]
+        public async Task <IActionResult> Delete (int id)
+        {
+            return await Delete<Cine>(id);
+        }
 
 
 

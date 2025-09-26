@@ -9,28 +9,40 @@ import { Coordenada } from './coordenada';
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css']
 })
-export class MapaComponent implements OnInit{
-  
-  ngOnInit(): void {
-    this.capas = this.coordenadasIniciales.map(valor => {
-      const marcador = marker([valor.latitud, valor.longitud], this.markerOptions);
+export class MapaComponent implements OnInit {
 
-      return marcador;
-    })
+  // ngOnInit(): void {
+  //   this.capas = this.coordenadasIniciales.map(valor => {
+  //     const marcador = marker([valor.latitud, valor.longitud], this.markerOptions);
+
+  //     return marcador;
+  //   })
+  // }
+  ngOnInit(): void {
+    console.log('🗺️ MapaComponent - ngOnInit');
+    console.log('📍 Coordenadas iniciales recibidas:', this.coordenadasIniciales);
+
+    this.capas = this.coordenadasIniciales.map(valor => {
+      console.log('📌 Creando marcador para:', valor);
+      return marker([valor.latitud, valor.longitud], this.markerOptions);
+    });
+
+    console.log('🎯 Capas creadas:', this.capas);
   }
 
   @Input()
-  coordenadasIniciales : Coordenada[] = [];
+  coordenadasIniciales: Coordenada[] = [];
 
   @Output()
-  coordenadaSeleccionado = new EventEmitter<Coordenada>();
+  coordenadaSeleccionada = new EventEmitter<Coordenada>();
 
   markerOptions: MarkerOptions = {
     icon: icon({
       iconSize: [25, 41],
       iconAnchor: [13, 41],
-      iconUrl: 'assets/marker-icon.png',
-      shadowUrl: 'assets/marker-shadow.png'
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png'
     })
   };
 
@@ -41,8 +53,8 @@ export class MapaComponent implements OnInit{
         attribution: '...'
       })
     ],
-    zoom: 5,
-    center: latLng(40.277102507138814, -3.8044173764855893)
+    zoom: 14,
+    center: latLng(40.41788926862532, -3.701494433349866)
   };
 
   capas: Marker<any>[] = [];
@@ -53,6 +65,6 @@ export class MapaComponent implements OnInit{
 
     this.capas = []; //Reset
     this.capas.push(marker([latitud, longitud], this.markerOptions)); //para colocar en el mapa
-    this.coordenadaSeleccionado.emit({latitud,longitud});
+    this.coordenadaSeleccionada.emit({ latitud, longitud });
   }
 }
