@@ -54,7 +54,7 @@ export class MapaComponent implements OnInit {
       })
     ],
     zoom: 14,
-    center: latLng(40.41788926862532, -3.701494433349866)
+    center: latLng(40.41, -3.70)
   };
 
   capas: Marker<any>[] = [];
@@ -67,4 +67,10 @@ export class MapaComponent implements OnInit {
     this.capas.push(marker([latitud, longitud], this.markerOptions)); //para colocar en el mapa
     this.coordenadaSeleccionada.emit({ latitud, longitud });
   }
+
+
+
+
+
+
 }

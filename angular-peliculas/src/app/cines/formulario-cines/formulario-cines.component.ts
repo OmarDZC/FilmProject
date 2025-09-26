@@ -16,27 +16,20 @@ import { Coordenada } from '../../compartidos/componentes/mapa/coordenada';
   styleUrl: './formulario-cines.component.css'
 })
 export class FormularioCinesComponent implements OnInit {
-
-  // ngOnInit(): void {
-  //   if(this.modelo !== undefined){
-  //     this.form.patchValue(this.modelo);
-  //     this.coordenadasIniciales.push({latitud: this.modelo.latitud, longitud: this.modelo.longitud})
-  //   }
-  // }
   ngOnInit(): void {
-    console.log('🔁 FormularioCinesComponent - ngOnInit');
-    console.log('📌 Modelo recibido:', this.modelo);
-
-    if (this.modelo !== undefined) {
-      this.form.patchValue(this.modelo);
-      this.coordenadasIniciales = [{
-        latitud: this.modelo.latitud,
-        longitud: this.modelo.longitud
-      }];
-
-      console.log('📍 Coordenadas iniciales establecidas:', this.coordenadasIniciales);
-    }
+  if(this.modelo !== undefined){
+    this.form.patchValue({
+      nombre: this.modelo.nombre,
+      latitud: this.modelo.longitud,
+      longitud: this.modelo.latitud
+    });
+    
+    this.coordenadasIniciales = [{
+      latitud: this.modelo.longitud,
+      longitud: this.modelo.latitud 
+    }];
   }
+}
 
   @Input()
   modelo?: CineCreacionDTO;
@@ -49,15 +42,15 @@ export class FormularioCinesComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({
-    nombre: ['', { validators: [Validators.required] }],
+    nombre: ['', {validators: [Validators.required]}],
     latitud: new FormControl<number | null>(null, Validators.required), //obligatorio que marque una ubicacion en el mapa
     longitud: new FormControl<number | null>(null, Validators.required)
   })
 
-  obtenerErrorCampoNombre(): string {
+  obtenerErrorCampoNombre() : string {
     let nombre = this.form.controls.nombre; //para llamar al nombre del formulario creado
 
-    if (nombre.hasError('required')) {
+    if(nombre.hasError('required')){
       return 'El campo nombre es requerido'
     }
     return '';
@@ -68,15 +61,15 @@ export class FormularioCinesComponent implements OnInit {
   }
 
   guardarCambios() {
-    if (!this.form.valid) {
+    if(!this.form.valid){
       return;
     }
-
+    
     const cine = this.form.value as CineCreacionDTO;
     this.posteoFormulario.emit(cine);
   }
 
-
+  
 
 
 
