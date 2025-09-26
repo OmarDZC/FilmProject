@@ -1,0 +1,16 @@
+<h4>{{titulo}}</h4>
+
+<div>
+    <!--el input esta escondido, y el button hace de input llamando a cargadorArchivo y haciendo click-->
+    <button type="button" mat-raised-button (click)="cargadorArchivo.click()">Seleccionar archivo</button>
+    <!--permite cualquier imagen-->
+    <input type="file" hidden #cargadorArchivo accept="image/*" (change)="cambio($event)" />
+</div>
+
+<div class="contenedor-img">
+    @if (imagenBase64) {
+        <img [src]="imagenBase64" width="250" height="169" />
+    } @else if(urlImagenActual) {
+        <img [src]="urlImagenActual" width="250" height="169" />
+    }
+</div>

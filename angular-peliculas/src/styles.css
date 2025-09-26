@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+/* ESTILO GLOBAL DE LA APLICACION */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    height: fit-content;
+}
+
+/*boton dentro de un formulario*/
+form button {
+    margin-right: 1rem;
+}
+
+mat-form-field {
+    width: 100%;
+    max-width: 500px;
+    display: block !important;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.contenedorBotones{
+    margin-top: 1rem;
+}
+
+/*para la tabla de generos etc*/
+.indice-elementos {
+    margin-top: 1rem;
+}
+.indice-elementos a {
+    margin-right: 1rem;
+}
+
+.mat-warn {
+  background-color: #f44336 !important;
+  color: white !important;
+}
