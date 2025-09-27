@@ -53,8 +53,8 @@ export class MapaComponent implements OnInit {
         attribution: '...'
       })
     ],
-    zoom: 14,
-    center: latLng(40.41, -3.70)
+    zoom: 12,
+    center: latLng(40.35, -3.72)
   };
 
   capas: Marker<any>[] = [];
