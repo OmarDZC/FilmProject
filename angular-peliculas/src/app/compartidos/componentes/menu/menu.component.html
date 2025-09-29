@@ -1,0 +1,26 @@
+<mat-toolbar>
+    <span>
+        <!--haciendor referencia a la pagina lading-->
+        <a mat-button routerLink="">
+            <mat-icon>local_movies</mat-icon> Angular Peliculas
+        </a>
+    </span>
+    <div>
+        <a mat-button routerLink="peliculas/filtrar">
+            <mat-icon>search</mat-icon>
+            Buscar películas</a>
+    </div>
+    <div>
+        <!--haciendo referencia a generos de app.route-->
+        <a mat-button routerLink="generos">Géneros</a> 
+    </div>
+    <div>
+        <a mat-button routerLink="actores">Actores</a> 
+    </div>
+    <div>
+        <a mat-button routerLink="cines">Cines</a> 
+    </div>
+    <div>
+        <a mat-button routerLink="peliculas/crear">Crear pelicula</a> 
+    </div>
+</mat-toolbar>

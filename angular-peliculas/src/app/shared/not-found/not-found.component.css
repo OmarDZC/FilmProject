@@ -1,0 +1,27 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh; /* ocupa toda la pantalla */
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.not-found h1 {
+  font-size: 8rem;
+  margin: 0;
+  font-weight: bold;
+  color: #e53935; /* rojo tipo error */
+}
+
+.not-found p {
+  font-size: 2rem;
+  margin: 10px 0 30px;
+}
+
+.not-found button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+}
