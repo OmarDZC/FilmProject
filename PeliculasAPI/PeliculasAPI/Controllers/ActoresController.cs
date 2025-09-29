@@ -45,6 +45,14 @@ namespace PeliculasAPI.Controllers
            return await Get<Actor, ActorDTO>(id);
         }
 
+        [HttpGet("{nombre}")]
+        public async Task<ActionResult<List<PeliculaActorDTO>>> Get(string nombre)
+        {
+            //si escribe A, recupera todos los actores que contengan
+            return await context.Actores.Where(x => x.Nombre.Contains(nombre))
+                .ProjectTo<PeliculaActorDTO>(mapper.ConfigurationProvider).ToListAsync();
+        }
+
         [HttpPost]
         [OutputCache(Tags = [cacheTag])]
         //fromform para crear con foto

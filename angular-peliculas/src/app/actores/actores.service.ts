@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { ActorCreacionDTO, ActorDTO } from './actores';
+import { ActorAutoCompleteDTO, ActorCreacionDTO, ActorDTO } from './actores';
 import { PaginacionDTO } from '../compartidos/modelo/PaginacionDTO';
 import { Observable } from 'rxjs';
 import { contruirQueryParams } from '../compartidos/funciones/contruirQueryParams';
@@ -53,6 +53,10 @@ export class ActoresService implements IServicioCRUD<ActorDTO, ActorCreacionDTO>
 
   public borrar(id:number){
     return this.http.delete(`${this.urlBase}/${id}`);
+  }
+
+  public obtenerPorNombre(nombre: string) : Observable<ActorAutoCompleteDTO[]> {
+    return this.http.get<ActorAutoCompleteDTO[]>(`${this.urlBase}/${nombre}`);
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { ActorAutoCompleteDTO } from '../actores';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ActoresService } from '../actores.service';
 
 
 @Component({
@@ -15,16 +16,21 @@ import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-
   templateUrl: './autocomplete-actores.component.html',
   styleUrl: './autocomplete-actores.component.css'
 })
-export class AutocompleteActoresComponent {
+export class AutocompleteActoresComponent implements OnInit{
+  ngOnInit(): void {
+    this.control.valueChanges.subscribe(valor => {
+      //cada vez que se escriba en el input busque un nombre
+      if(typeof valor === 'string' && valor) {
+        this.actoresService.obtenerPorNombre(valor).subscribe(actores => {
+          this.actores = actores;
+        })
+      }
+    })
+  }
 
   control = new FormControl();
-
-  actores: ActorAutoCompleteDTO[] = [{
-    id: 1, nombre: "Tanjiro", personaje: '', foto: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/ea/Tanjirou_manga.png/250px-Tanjirou_manga.png'
-  },
-  { id: 2, nombre: 'Ash', personaje: '', foto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Ash_Ketchum_%285764005330%29.jpg/250px-Ash_Ketchum_%285764005330%29.jpg' },
-  { id: 3, nombre: 'Naruto', personaje: '', foto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Cosplay_-_AWA15_-_Naruto_Uzumaki_derivate.png/250px-Cosplay_-_AWA15_-_Naruto_Uzumaki_derivate.png' }
-  ]
+  actores: ActorAutoCompleteDTO[] = [];
+  actoresService = inject(ActoresService);
 
   @Input({required: true})
   actoresSeleccionados: ActorAutoCompleteDTO[] = [];
