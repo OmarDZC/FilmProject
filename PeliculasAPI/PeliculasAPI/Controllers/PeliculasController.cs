@@ -182,6 +182,7 @@ namespace PeliculasAPI.Controllers
         }
 
 
+
         //guardar orden que se guardan los autores
         private void AsignarOrdenActores(Pelicula pelicula)
         {
