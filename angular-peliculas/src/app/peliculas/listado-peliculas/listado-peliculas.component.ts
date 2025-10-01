@@ -34,4 +34,10 @@ export class ListadoPeliculasComponent implements OnInit {
     })
   }
 
+  
+
+
+
+
+
 }

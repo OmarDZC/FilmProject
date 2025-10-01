@@ -6,7 +6,7 @@
       {
       <div class="pelicula-contenedor">
 
-        <a>
+        <a [routerLink]="['/pelicula', pelicula.id]">
           @if(pelicula.poster){
           <!--si la pelicula tiene poster...-->
           <img [src]="pelicula.poster" width="300" height="360">
@@ -16,7 +16,7 @@
         </a>
 
         <p>
-          <a>{{pelicula.titulo}}</a>
+          <a [routerLink]="['/pelicula', pelicula.id]"> {{pelicula.titulo}} </a>
         </p>
 
         <div>

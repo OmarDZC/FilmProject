@@ -35,6 +35,14 @@ namespace PeliculasAPI.Controllers
             return await Get<Genero, GeneroDTO>(paginacion, ordenarPor: x => x.Nombre);
         }
 
+        [HttpGet("todos")]
+        [OutputCache(Tags = [cacheTag])]
+        public async Task<List<GeneroDTO>> Get()
+        {
+            //viene de customBaseController
+            return await Get<Genero, GeneroDTO>(ordenarPor: x => x.Nombre);
+        }
+
         [HttpGet("{id:int}", Name = "ObtenerGeneroPorId")]
         [OutputCache(Tags = [cacheTag])]
         public async Task <ActionResult<GeneroDTO>> Get(int id)
@@ -60,6 +68,8 @@ namespace PeliculasAPI.Controllers
         {
             return await Delete<Genero>(id);
         }
+
+
 
 
 

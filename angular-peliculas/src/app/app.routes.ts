@@ -13,6 +13,7 @@ import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component';
+import { DetallePeliculasComponent } from './peliculas/detalle-peliculas/detalle-peliculas.component';
 
 export const routes: Routes = [
     { path: '', component: LandingPageComponent}, //se añade el landingPage como primera pagina
@@ -32,6 +33,8 @@ export const routes: Routes = [
     { path: 'peliculas/crear', component: CrearPeliculaComponent},
     { path: 'peliculas/editar/:id', component: EditarPeliculaComponent},
     { path: 'peliculas/filtrar', component: FiltroPeliculasComponent},
+
+    { path: 'pelicula/:id', component:DetallePeliculasComponent},
 
     { path: '**', component: NotFoundComponent } //para cuando no encuentre ruta, las rutas que no existan todas iran aqui => SIEMPRE VA EL ULTIMO
 ];

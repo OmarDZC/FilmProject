@@ -19,19 +19,21 @@ export class MapaComponent implements OnInit {
   //   })
   // }
   ngOnInit(): void {
-    console.log('🗺️ MapaComponent - ngOnInit');
-    console.log('📍 Coordenadas iniciales recibidas:', this.coordenadasIniciales);
-
     this.capas = this.coordenadasIniciales.map(valor => {
-      console.log('📌 Creando marcador para:', valor);
-      return marker([valor.latitud, valor.longitud], this.markerOptions);
-    });
+      const marcador =  marker([valor.latitud, valor.longitud], this.markerOptions);
 
-    console.log('🎯 Capas creadas:', this.capas);
+      if(valor.texto) {
+        marcador.bindPopup(valor.texto, {autoClose: false, autoPan: false});
+      }
+      return marcador;
+    });
   }
 
   @Input()
   coordenadasIniciales: Coordenada[] = [];
+
+  @Input()
+  soloLectura = false; //para que no se pueda editar el mapa cuando el usuario esta viendo la ubicacion del cine donde hay una pelicula
 
   @Output()
   coordenadaSeleccionada = new EventEmitter<Coordenada>();
@@ -60,6 +62,10 @@ export class MapaComponent implements OnInit {
   capas: Marker<any>[] = [];
 
   manejarClick(event: LeafletMouseEvent) {
+    if(this.soloLectura){
+      return;
+    }
+
     const latitud = event.latlng.lat;
     const longitud = event.latlng.lng;
 
@@ -67,6 +73,7 @@ export class MapaComponent implements OnInit {
     this.capas.push(marker([latitud, longitud], this.markerOptions)); //para colocar en el mapa
     this.coordenadaSeleccionada.emit({ latitud, longitud });
   }
+
 
 
 
