@@ -10,17 +10,24 @@
             <mat-icon>search</mat-icon>
             Buscar películas</a>
     </div>
-    <div>
-        <!--haciendo referencia a generos de app.route-->
-        <a mat-button routerLink="generos">Géneros</a> 
-    </div>
-    <div>
-        <a mat-button routerLink="actores">Actores</a> 
-    </div>
-    <div>
-        <a mat-button routerLink="cines">Cines</a> 
-    </div>
-    <div>
-        <a mat-button routerLink="peliculas/crear">Crear pelicula</a> 
-    </div>
+
+    <!--solo apacera si soy admin-->
+    <app-autorizado rol="admin">
+        <ng-container autorizado>
+            <div>
+                <!--haciendo referencia a generos de app.route-->
+                <a mat-button routerLink="generos">Géneros</a>
+            </div>
+            <div>
+                <a mat-button routerLink="actores">Actores</a>
+            </div>
+            <div>
+                <a mat-button routerLink="cines">Cines</a>
+            </div>
+            <div>
+                <a mat-button routerLink="peliculas/crear">Crear pelicula</a>
+            </div>
+        </ng-container>
+    </app-autorizado>
+
 </mat-toolbar>
