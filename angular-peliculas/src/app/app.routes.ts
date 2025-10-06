@@ -16,6 +16,7 @@ import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-pe
 import { DetallePeliculasComponent } from './peliculas/detalle-peliculas/detalle-peliculas.component';
 import { esAdminGuard } from './compartidos/guards/es-admin.guard';
 import { LoginComponent } from './seguridad/login/login.component';
+import { RegistroComponent } from './seguridad/registro/registro.component';
 
 export const routes: Routes = [
     { path: '', component: LandingPageComponent}, //se añade el landingPage como primera pagina
@@ -38,6 +39,7 @@ export const routes: Routes = [
     { path: 'peliculas/filtrar', component: FiltroPeliculasComponent},
     { path: 'pelicula/:id', component:DetallePeliculasComponent},
     { path: 'login', component: LoginComponent},
+    { path: 'registrar', component: RegistroComponent},
 
     { path: '**', component: NotFoundComponent } //para cuando no encuentre ruta, las rutas que no existan todas iran aqui => SIEMPRE VA EL ULTIMO
 ];
