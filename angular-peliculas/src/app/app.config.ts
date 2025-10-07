@@ -4,8 +4,9 @@ import { routes } from './app.routes';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { Subscription } from 'rxjs';
 import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { authInterceptor } from './seguridad/token-interceptor-http';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes, withComponentInputBinding()),
@@ -21,8 +22,8 @@ export const appConfig: ApplicationConfig = {
         monthYearA11yLabel: 'MMMM YYYY'
       }
     }),
-    //para usar http para traer apis
-    provideHttpClient(withFetch()),
+    //para usar http para traer apis //y se añade el interceptor
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     importProvidersFrom([SweetAlert2Module.forRoot()])
   ]
 };

@@ -1,6 +1,6 @@
 import { HttpParams } from "@angular/common/http";
 
-export function contruirQueryParams(obj: any): HttpParams {
+export function construirQueryParams(obj: any): HttpParams {
     let queryParams = new HttpParams();
 
     for(let propiedad in obj){

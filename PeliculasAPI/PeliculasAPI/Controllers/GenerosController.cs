@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +14,7 @@ namespace PeliculasAPI.Controllers
 {
     [ApiController]
     [Route("api/generos")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "esadmin")]
     public class GenerosController: CustomBaseController
     {
         private readonly IOutputCacheStore outputCacheStore;
@@ -37,6 +40,7 @@ namespace PeliculasAPI.Controllers
 
         [HttpGet("todos")]
         [OutputCache(Tags = [cacheTag])]
+        [AllowAnonymous] //todos pueden usarla
         public async Task<List<GeneroDTO>> Get()
         {
             //viene de customBaseController

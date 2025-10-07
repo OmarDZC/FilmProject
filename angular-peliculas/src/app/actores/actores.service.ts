@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { ActorAutoCompleteDTO, ActorCreacionDTO, ActorDTO } from './actores';
 import { PaginacionDTO } from '../compartidos/modelo/PaginacionDTO';
 import { Observable } from 'rxjs';
-import { contruirQueryParams } from '../compartidos/funciones/contruirQueryParams';
+import { construirQueryParams } from '../compartidos/funciones/contruirQueryParams';
 import { IServicioCRUD } from '../compartidos/interfaces/IServicioCRUD';
 
 @Injectable({
@@ -38,7 +38,7 @@ export class ActoresService implements IServicioCRUD<ActorDTO, ActorCreacionDTO>
   }
 
   public obtenerPaginado(paginacion: PaginacionDTO): Observable<HttpResponse<ActorDTO[]>> {
-    let queryParams = contruirQueryParams(paginacion);
+    let queryParams = construirQueryParams(paginacion);
     return this.http.get<ActorDTO[]>(this.urlBase, {params: queryParams, observe: 'response'});
   }
 

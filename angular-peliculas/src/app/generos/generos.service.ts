@@ -4,7 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { PaginacionDTO } from '../compartidos/modelo/PaginacionDTO';
-import { contruirQueryParams } from '../compartidos/funciones/contruirQueryParams';
+import { construirQueryParams } from '../compartidos/funciones/contruirQueryParams';
 import { IServicioCRUD } from '../compartidos/interfaces/IServicioCRUD';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class GenerosService implements IServicioCRUD<GeneroDTO, GeneroCreacionDT
 
   //para obtener el listado de generos => observable es como promise (trae algo en el futuro)
   public obtenerPaginado(paginacion: PaginacionDTO): Observable<HttpResponse<GeneroDTO[]>> {
-    let queryParams = contruirQueryParams(paginacion);
+    let queryParams = construirQueryParams(paginacion);
     return this.http.get<GeneroDTO[]>(this.urlBase, { params: queryParams, observe: 'response' }); //construye la url con los queryParams y observa la respuesta completa
   }
 

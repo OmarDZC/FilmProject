@@ -5,7 +5,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PaginacionDTO } from '../compartidos/modelo/PaginacionDTO';
 import { environment } from '../../environments/environment';
-import { contruirQueryParams } from '../compartidos/funciones/contruirQueryParams';
+import { construirQueryParams } from '../compartidos/funciones/contruirQueryParams';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class CinesService implements IServicioCRUD<CineDTO, CineCreacionDTO>{
 
   constructor() { }
   obtenerPaginado(paginacion: PaginacionDTO): Observable<HttpResponse<CineDTO[]>> {
-    let queryParams = contruirQueryParams(paginacion);
+    let queryParams = construirQueryParams(paginacion);
     return this.http.get<CineDTO[]>(this.urlBase, {params: queryParams, observe: 'response'});
   }
   obtenerPorId(id: number): Observable<CineDTO> {
