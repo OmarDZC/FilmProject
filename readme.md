@@ -1,7 +1,7 @@
 # FilmProject 🎬
 
 **Realizado por Omar**  
-Proyecto full-stack de un cine con sus películas etc desarrollado con .NET y Angular, con conocimientos de cursos que estoy realizando.
+Proyecto full-stack de un cine con sus películas etc desarrollado con .NET y Angular, hecho con conocimientos adquiridos haciendo cursos.
 
 ## 📋 Estado del Proyecto
 🔨 **En desarrollo activo**
