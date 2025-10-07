@@ -4,18 +4,23 @@
 Proyecto full-stack de un cine con sus películas etc desarrollado con .NET y Angular, hecho con conocimientos adquiridos haciendo cursos.
 
 ## 📋 Estado del Proyecto
-🔨 **En desarrollo activo**
 - ✅ Funcionalidades básicas implementadas
 - 🚧 Agregando nuevas funcionalidades
+- 🛡️ **Seguridad JWT** 
+- 🔒 **Autenticación de usuarios**
+- 👤 **Sistema de roles y permisos**
 
 ## 🛠️ Tecnologías Utilizadas
 ### Backend
 - C# / .NET
+- Entity Framework Core - ORM y gestión de datos
 - SQL Server
-- Entity Framework Core
+- AutoMapper - Mapeo de DTOs
+- JWT - Autenticación segura
 
 ### Frontend
-- Angular
+- **Angular**
+- Angular Material - Componentes UI
 - HTML5 / CSS3 / JS
 - TS
 
