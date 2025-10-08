@@ -1,29 +1,34 @@
 # FilmProject 🎬
 
 **Realizado por Omar**  
-Proyecto full-stack de un cine con sus películas etc desarrollado con .NET y Angular, con conocimientos de cursos que estoy realizando.
+Proyecto full-stack de un cine con sus películas etc desarrollado con .NET y Angular, hecho con conocimientos adquiridos haciendo cursos.
 
 ## 📋 Estado del Proyecto
-🔨 **En desarrollo activo**
-- ✅ Funcionalidades básicas implementadas
-- 🚧 Agregando nuevas funcionalidades
+- ✅ **Funcionalidades básicas implementadas**
+- 🚧 **Agregando nuevas funcionalidades**
+- 🛡️ **Seguridad JWT** 
+- 🔒 **Autenticación de usuarios**
+- 👤 **Sistema de roles y permisos**
 
 ## 🛠️ Tecnologías Utilizadas
 ### Backend
-- C# / .NET
-- SQL Server
-- Entity Framework Core
+- **C# / .NET**
+- **Entity Framework Core** - ORM y gestión de datos
+- **SQL Server**
+- **AutoMapper** - Mapeo de DTOs
+- **JWT** - Autenticación segura
 
 ### Frontend
-- Angular
-- HTML5 / CSS3 / JS
-- TS
+- **Angular**
+- **Angular Material** - Componentes UI
+- **HTML5 / CSS3 / JS**
+- **TS**
 
 ### Herramientas
-- Visual Studio 2022
-- Visual Studio Code
-- Git / GitHub
-- SQL Server Management Studio
+- **Visual Studio 2022**
+- **Visual Studio Code**
+- **Git / GitHub**
+- **SQL Server Management Studio**
 
 ## Cómo usar
 Este proyecto tiene **Front-end** (Angular) y **Back-end** (.NET). Para ejecutarlo localmente, sigue los pasos:
