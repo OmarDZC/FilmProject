@@ -5,6 +5,19 @@ mat-toolbar{
     z-index: 1000;
 }
 
+/* en movil el menu no cabe en una fila; se deja scrollear en horizontal
+   en vez de cortar enlaces fuera de la pantalla */
+@media (max-width: 768px) {
+    mat-toolbar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    mat-toolbar > * {
+        flex-shrink: 0;
+    }
+}
+
 app-autorizado {
     display: flex;
 }
